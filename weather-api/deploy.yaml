@@ -15,7 +15,7 @@ spec:
         app: weather-api
     spec:
       containers:
-        - image: dfranciswoolies/ciarecruitment-bestapiever
+        - image: dfranciswoolies/ciarecruitment-bestapiever:247904
           name: weather-api
           envFrom:
             - secretRef:
