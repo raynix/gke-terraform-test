@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: ingress-weather-api
 spec:
+  tls:
+    - hosts:
+        - weather-api.awes.one
+      secretName: certs
   ingressClassName: nginx
   rules:
     - host: weather-api.awes.one
