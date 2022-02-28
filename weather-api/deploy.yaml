@@ -17,11 +17,32 @@ spec:
       containers:
         - image: dfranciswoolies/ciarecruitment-bestapiever
           name: weather-api
+          envFrom:
+            - secretRef:
+                name: weather-api
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            timeoutSeconds: 1
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            timeoutSeconds: 1
           resources:
             requests:
               cpu: 500m
               memory: 500Mi
           ports:
-            - containerPort: 6901
-              name: vnc
+            - containerPort: 80
+              name: http
               protocol: TCP
